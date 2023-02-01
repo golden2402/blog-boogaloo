@@ -1,5 +1,4 @@
 const express = require("express")
-
 const blogPosts = require("./util/loadBlogPosts")()
 
 let app = express();
