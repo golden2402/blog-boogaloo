@@ -1,12 +1,12 @@
-// boiler-plate to setting padding/margin of all blog elements to 0
+// setting padding/margin of all blog elements to 0
 .blog-post, .blog-post > * {
     margin: 0;
     padding: 0;
 }
 
 // -- CLASSES USED WITHIN BLOG COMPONENTS --
-// .blog_post
-// .blog-post__title
-// .blog-post__author
-// .blog-post__date
-// .blog-post__content
+// .blog-post
+// .blog-title
+// .blog-author
+// .blog-date
+// .blog-content
