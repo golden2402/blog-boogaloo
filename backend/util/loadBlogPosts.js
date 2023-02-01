@@ -1,7 +1,7 @@
-import * as path from 'path';
-import * as fs from 'fs';
+const path = require('path')
+const fs = require('fs')
 
-const directoryPath = path.join(process.cwd() + '/blogposts');
+const directoryPath = path.join(process.cwd(), 'blogposts')
 
 const getCreatedDate = (file) => {
     const { birthtime } = fs.statSync(file)
@@ -17,11 +17,11 @@ const getBlogPosts = async () => {
     const asyncFunctions = [];
 
     for (let file of files) {
-        file = directoryPath + '/' + file;
+        file = path.join(directoryPath, file);
         const createdDate = getCreatedDate(file) // get created date of file
 
-        asyncFunctions.push(async () => {
-            file = (await import(file)).default
+        asyncFunctions.push(() => {
+            file = require(file)
             file.date = createdDate
             blogPosts.push(file)
         })
@@ -35,4 +35,4 @@ const getBlogPosts = async () => {
     return blogPosts
 }
 
-export default getBlogPosts;
+module.exports = getBlogPosts
