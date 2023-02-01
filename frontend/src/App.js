@@ -6,10 +6,12 @@ const App = () => {
 
   useEffect(() => {
     async function getPreviews() {
-      const response = await fetch("api/preview")
+      const response = await fetch("/api/preview")
 
       if (response.ok) {
-        setPreviews(JSON.parse(response.body))
+        response.json().then(response => {
+          setPreviews(response)
+        })
       }
     }
 

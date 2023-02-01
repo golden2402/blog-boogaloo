@@ -3,9 +3,12 @@ import BlogPost from "../components/BlogPost";
 const parseBlogPosts = (posts) => {
     const postComponents = [];
 
-    for (const post in posts) {
+    for (let i = 0; i < posts.length; i++) {
+        const post = posts[i];
+
         postComponents.push(
             <BlogPost
+                key={i}
                 title={post.title}
                 author={post.author}
                 date={post.date}
@@ -13,7 +16,7 @@ const parseBlogPosts = (posts) => {
             />
         )
     }
-    
+
     return postComponents;
 }
 
