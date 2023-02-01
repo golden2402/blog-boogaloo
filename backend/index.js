@@ -1,23 +1,32 @@
-const express = require("express")
-let app = express()
+const express = require("express");
+let app = express();
 
-const useApiRoute = require("./api/useApiRoute")
-
-useApiRoute("/blog/:id", function(req, res) {
-  // if id is malformed, send 404:
+const apiRouter = express.Router();
+// specific blog data:
+apiRouter.route("/blog/:id").get((request, response) => {
+  // if id is NaN, 400:
   
-  // if no post, 404:
+  // if blog post cannot be found, 404:
+  
+  
+  response.status(400).send();
+});
+// get all previews, for any comprehensive post list:
+apiRouter.route("/preview").get((_, response) => {
+  response.status(401).send();
+});
+// get `count` previews, for shorter preview screens:
+apiRouter.route("/preview/:count").get((request, response) => {
+  response.status(402).send();
+});
 
-  // ...otherwise jsonify, and send:
-  res.status(404).send()
-})(app)
+app.use("/api", apiRouter);
+// invalid routes:
+app.use("*", (_, response) => {
+  response.status(404).send();
+});
 
-// nonexistent routes:
-app.use(function(_, res) {
-  res.status(404).send()
-})
-
-const PORT = 8080
+const PORT = 8080;
 app.listen(PORT, function() {
-  console.log(`Listening on port ${PORT}.`)
-})
+  console.log(`Listening on port ${PORT}.`);
+});
