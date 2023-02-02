@@ -14,19 +14,21 @@ router.route("/blog/:id").get((request, response) => {
   // if id is NaN, 400:
   if (isNaN(id) || !Number.isInteger(id) || id < 0) {
     response.status(400).send("Invalid id.");
+    return;
   }
   // if blog post cannot be found, 404:
   const blogPost = blogPosts[id]
   if (blogPost === undefined) {
     response.status(400).send(`Couldn't find blog under id: ${id}.`);
+    return;
   }
 
-  response.json(blogPost).send();
+  response.json(blogPost);
 });
 
 // get all previews, for any comprehensive post list:
 router.route("/preview").get((_, response) => {
-  response.json(blogPosts).send();
+  response.json(blogPosts);
 });
 // get `count` previews, for shorter preview screens:
 router.route("/preview/:count").get((request, response) => {
@@ -34,8 +36,9 @@ router.route("/preview/:count").get((request, response) => {
 
   if (isNaN(count) || !Number.isInteger(count)) {
     response.status(400).send("Invalid number of entries.")
+    return;
   }
-
+  
   response.json(blogPosts.slice(-count)).send()
 });
 
