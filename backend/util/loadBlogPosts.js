@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 
-const directoryPath = path.join(__dirname, '..', 'blogPosts')
+const directoryPath = path.join(__dirname, '..', 'posts')
 
 const getCreatedDate = (file) => {
     const { birthtime } = fs.statSync(file)
