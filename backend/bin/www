@@ -3,7 +3,11 @@
 const app = require("../app");
 const http = require("http");
 
-require("dotenv").config();
+const path = require("path")
+// no matter where our cwd is, make sure we fetch the correct .env:
+require("dotenv").config({
+  path: path.join(__dirname, "..", ".env")
+});
 
 const port = process.env.PORT || 3000
 app.set("port", port)
