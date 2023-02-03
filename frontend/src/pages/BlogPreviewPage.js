@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import parseBlogPosts from "../util/parseBlogPosts";
 
-import { Link } from "react-router";
-
 const BlogPreviewPage = () => {
     const [previews, setPreviews] = useState([])
 
@@ -11,14 +9,14 @@ const BlogPreviewPage = () => {
       const response = await fetch("/api/preview")
 
       if (response.ok) {
-        response.json().then(response => {
-          setPreviews(response)
+        response.json().then(body => {
+          setPreviews(body);
         })
       }
     }
 
     if (previews.length === 0) {
-      getPreviews()
+      getPreviews();
     }
   }, [previews])
 
