@@ -9,6 +9,7 @@ const parseBlogPosts = (posts) => {
         postComponents.push(
             <BlogPost
                 key={i}
+                id={i}
                 title={post.title}
                 author={post.author}
                 date={post.date}
