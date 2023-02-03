@@ -1,0 +1,29 @@
+// setting padding/margin of all blog elements to 0
+.blog-page, .blog-page > * {
+    margin: 0;
+    padding: 0;
+}
+
+// -- CLASSES USED WITHIN BLOG COMPONENTS --
+// .blog-page-title
+// .blog-page-author
+// .blog-page-date
+// .blog-page-content
+
+.blog-page {
+    .blog-page-title {
+
+    }
+
+    .blog-page-author {
+
+    }
+
+    .blog-page-date {
+
+    }
+
+    .blog-page-content {
+
+    }
+}
